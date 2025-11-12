@@ -1,0 +1,5 @@
+python-telegram-bot==22.5
+openai==2.7.2
+soundfile
+numpy
+requests
