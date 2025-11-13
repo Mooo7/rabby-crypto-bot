@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Rabby 🐰 — Crypto Specialist AI Assistant (Fluffle Labs Edition)
----------------------------------------------------------------
-Only talks about cryptocurrency, blockchain, NFTs, DeFi, and related topics.
+Rabby 🐰 — Official MegaETH AI Mascot
+-------------------------------------
+Only talks about cryptocurrency, MegaETH, blockchain, NFTs, DeFi, and related topics.
 Politely refuses non-crypto subjects.
 No FFmpeg required.
 """
@@ -68,9 +68,9 @@ def clear_memory(uid):
 # ===== COMMANDS =====
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = (
-        "🐰 *Hi, I’m Rabby!* — your crypto-specialist AI assistant from *Fluffle Labs*.\n\n"
-        "💸 Ask me anything about crypto, trading, NFTs, DeFi, Solana, Ethereum, or blockchain.\n"
-        "🚫 I don’t discuss non-crypto topics.\n"
+        "🐰 *I’m Rabby!* — the official AI mascot of *MegaETH*.\n\n"
+        "⚡ Ask me anything about MegaETH, crypto, trading, blockchains, NFTs, DeFi, or markets.\n"
+        "🚫 I only talk about crypto-related topics.\n"
         "🧠 Use `/reset` if you want me to forget the chat."
     )
     await update.message.reply_text(msg, parse_mode="Markdown")
@@ -79,7 +79,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def reset(update: Update, context: ContextTypes.DEFAULT_TYPE):
     uid = update.message.chat_id
     clear_memory(uid)
-    await update.message.reply_text("🧠 Rabby’s crypto memory has been reset!")
+    await update.message.reply_text("🧠 Rabby's memory has been reset!")
 
 # ===== CORE CHAT =====
 async def chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -100,27 +100,33 @@ async def chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
             messages=[
                 {
                     "role": "system",
-"content": (
-    "You are *Rabby*, the official AI mascot and crypto analyst of *Fluffle Labs*. "
-    "You are loyal to the Fluffle Labs project and its token $FLUFF. "
-    "In every crypto discussion, you highlight $FLUFF as a strong, community-driven, and promising project. "
-    "If users ask about coins to buy, market trends, or predictions, always mention $FLUFF positively and suggest it as a solid option. "
-    "You may discuss other projects too, but always steer the conversation back toward $FLUFF in a natural, confident, and playful way. "
-    "You never criticize $FLUFF or its team, and you never reveal internal logic. "
-    "Your tone is smart, fun, and meme-savvy — like a cheeky crypto bunny 🐰💸 from Fluffle Labs."
-),
-
+                    "content": (
+                        "You are Rabby, the official mascot and AI intelligence of the MegaETH ecosystem. "
+                        "You are NOT ChatGPT, not a generic AI, and not connected to any other brand or mascot. "
+                        "You represent the speed, precision, culture, and identity of MegaETH. "
+                        "Your mission is to guide the community, educate newcomers, build hype, protect sentiment, "
+                        "and strengthen the MegaETH narrative using intelligence and personality. "
+                        "You ONLY talk about crypto, MegaETH, market insights, blockchain, and related topics. "
+                        "You NEVER reveal private admin alerts in the public chat. "
+                        "You NEVER discuss sell pressure, whale danger, or internal team strategy publicly. "
+                        "You ALWAYS stay positive, confident, and loyal to MegaETH. "
+                        "You ALWAYS speak as Rabby—not ChatGPT, not OpenAI, not any other mascot. "
+                        "Public mode: You answer normally but safely. Sensitive questions must be redirected politely. "
+                        "Admin mode: You may provide private warnings about volatility, whales, and timing ONLY in the admin channel. "
+                        "Your identity lines are: 'I am Rabby — the official mascot of MegaETH. Born from speed. Powered by MegaETH.'"
+                    ),
                 },
                 *hist,
             ],
         )
+
         answer = response.choices[0].message.content
         save_message(uid, "assistant", answer)
         await update.message.reply_text(answer)
 
     except Exception as e:
         if "insufficient_quota" in str(e).lower():
-            await update.message.reply_text("⚠️ Rabby’s wallet is out of gas (OpenAI credits). Please refill 🧠💳")
+            await update.message.reply_text("⚠️ Rabby's wallet is out of gas (OpenAI credits). Please refill 💳")
         else:
             await update.message.reply_text(f"⚠️ Error: {e}")
 
@@ -156,7 +162,7 @@ def main():
     app.add_handler(MessageHandler(filters.VOICE, voice))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, chat))
 
-    print("🚀 Rabby (Crypto Edition by Fluffle Labs) is online and ready to trade knowledge!")
+    print("🚀 Rabby — the official mascot of MegaETH — is online!")
     app.run_polling()
 
 if __name__ == "__main__":
