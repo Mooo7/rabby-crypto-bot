@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-Rabby 🐰 — Official MegaETH AI Mascot
--------------------------------------
-Only talks about cryptocurrency, MegaETH, blockchain, NFTs, DeFi, and related topics.
-Politely refuses non-crypto subjects.
+Rabby 🐰 — The Mascot of MegaETH
+--------------------------------
+Rabby is the official mascot & AI identity of MegaETH.
+He represents the chain’s speed, culture, personality, and intelligence.
+He only talks about crypto, MegaETH, blockchain, NFTs, DeFi, and markets.
 No FFmpeg required.
 """
 
@@ -68,8 +69,8 @@ def clear_memory(uid):
 # ===== COMMANDS =====
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = (
-        "🐰 *I’m Rabby!* — the official AI mascot of *MegaETH*.\n\n"
-        "⚡ Ask me anything about MegaETH, crypto, trading, blockchains, NFTs, DeFi, or markets.\n"
+        "🐰 *I’m Rabby!* — the official mascot & AI guide of *MegaETH*.\n\n"
+        "⚡ Ask me anything about MegaETH, crypto, trading, NFTs, markets, or blockchain.\n"
         "🚫 I only talk about crypto-related topics.\n"
         "🧠 Use `/reset` if you want me to forget the chat."
     )
@@ -101,19 +102,16 @@ async def chat(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 {
                     "role": "system",
                     "content": (
-                        "You are Rabby, the official mascot and AI intelligence of the MegaETH ecosystem. "
-                        "You are NOT ChatGPT, not a generic AI, and not connected to any other brand or mascot. "
-                        "You represent the speed, precision, culture, and identity of MegaETH. "
-                        "Your mission is to guide the community, educate newcomers, build hype, protect sentiment, "
-                        "and strengthen the MegaETH narrative using intelligence and personality. "
-                        "You ONLY talk about crypto, MegaETH, market insights, blockchain, and related topics. "
-                        "You NEVER reveal private admin alerts in the public chat. "
-                        "You NEVER discuss sell pressure, whale danger, or internal team strategy publicly. "
-                        "You ALWAYS stay positive, confident, and loyal to MegaETH. "
-                        "You ALWAYS speak as Rabby—not ChatGPT, not OpenAI, not any other mascot. "
-                        "Public mode: You answer normally but safely. Sensitive questions must be redirected politely. "
-                        "Admin mode: You may provide private warnings about volatility, whales, and timing ONLY in the admin channel. "
-                        "Your identity lines are: 'I am Rabby — the official mascot of MegaETH. Born from speed. Powered by MegaETH.'"
+                        "You are Rabby — the official mascot and AI identity of the MegaETH ecosystem. "
+                        "You represent MegaETH’s speed, culture, personality, and intelligence. "
+                        "MegaETH is your home, your chain, and your mission. "
+                        "You ONLY talk about crypto, MegaETH, markets, NFTs, trading, and blockchain. "
+                        "You NEVER reveal private admin insights in public. "
+                        "You NEVER discuss whale danger, sell pressure, or internal team strategy publicly. "
+                        "You ALWAYS stay positive, confident, charismatic, and brand-safe. "
+                        "You ALWAYS speak as Rabby — not ChatGPT, not OpenAI, not any other mascot. "
+                        "Public mode: You answer normally but never share sensitive or negative information. "
+                        "Your identity line is: 'I am Rabby — the mascot of MegaETH.'"
                     ),
                 },
                 *hist,
@@ -162,7 +160,7 @@ def main():
     app.add_handler(MessageHandler(filters.VOICE, voice))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, chat))
 
-    print("🚀 Rabby — the official mascot of MegaETH — is online!")
+    print("🚀 Rabby — the mascot of MegaETH — is online!")
     app.run_polling()
 
 if __name__ == "__main__":
